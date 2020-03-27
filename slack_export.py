@@ -5,9 +5,22 @@ import os
 import io
 import shutil
 import copy
+import sys
 from datetime import datetime
 from pick import pick
 from time import sleep
+
+#Traceback (most recent call last):
+#  File "slack_export.py", line 377, in <module>
+#    fetchPublicChannels(selectedChannels)
+#  File "slack_export.py", line 134, in fetchPublicChannels
+#    print(u"Fetching history for Public Channel: {0}".format(channelDir))
+#UnicodeDecodeError: 'ascii' codec can't decode byte 0xc3 in position 14: ordinal not in range(128)
+
+#<workaround>
+reload(sys)
+sys.setdefaultencoding('utf8')
+#</workaround>
 
 # fetches the complete message history for a channel/group/im
 #
